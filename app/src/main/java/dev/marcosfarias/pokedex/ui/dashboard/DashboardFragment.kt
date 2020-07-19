@@ -3,9 +3,9 @@ package dev.marcosfarias.pokedex.ui.dashboard
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -15,6 +15,8 @@ import dev.marcosfarias.pokedex.R
 import dev.marcosfarias.pokedex.utils.ImageLoadingListener
 import dev.marcosfarias.pokedex.utils.PokemonColorUtil
 import kotlinx.android.synthetic.main.fragment_dashboard.*
+import kotlinx.android.synthetic.main.fragment_dashboard.app_bar
+import kotlinx.android.synthetic.main.fragment_dashboard.toolbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DashboardFragment : Fragment() {
@@ -38,6 +40,23 @@ class DashboardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val activity: AppCompatActivity = requireActivity() as AppCompatActivity
+        activity.setSupportActionBar(toolbar)
+        activity.supportActionBar?.setDisplayShowTitleEnabled(false)
+        activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        setHasOptionsMenu(true)
+        toolbar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.menuLike -> {
+                    Toast.makeText(requireContext(), "Like pokemon", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                else -> super.onOptionsItemSelected(menuItem)
+            }
+        }
+
         val id = checkNotNull(arguments?.getString("id"))
         val name = checkNotNull(arguments?.getString("name"))
 
@@ -48,27 +67,24 @@ class DashboardFragment : Fragment() {
                 textViewID.text = pokemon.id
                 textViewName.text = pokemon.name
 
+                toolbar_layout.title = pokemon.name
+
                 val color =
                     PokemonColorUtil(view.context).getPokemonColor(pokemon.typeofpokemon)
-                app_bar.setBackgroundColor(color)
+                coordinator.setBackgroundColor(color)
                 toolbar_layout.contentScrim?.colorFilter =
                     PorterDuffColorFilter(color, PorterDuff.Mode.SRC_ATOP)
-                activity?.window?.statusBarColor =
+                activity.window?.statusBarColor =
                     PokemonColorUtil(view.context).getPokemonColor(pokemon.typeofpokemon)
 
                 pokemon.typeofpokemon?.getOrNull(0).let { firstType ->
-                    textViewType3.text = firstType
-                    textViewType3.isVisible = firstType != null
+                    textViewType1.text = firstType
+                    textViewType1.isVisible = firstType != null
                 }
 
                 pokemon.typeofpokemon?.getOrNull(1).let { secondType ->
                     textViewType2.text = secondType
                     textViewType2.isVisible = secondType != null
-                }
-
-                pokemon.typeofpokemon?.getOrNull(2).let { thirdType ->
-                    textViewType1.text = thirdType
-                    textViewType1.isVisible = thirdType != null
                 }
 
                 Glide.with(view.context)
@@ -85,5 +101,9 @@ class DashboardFragment : Fragment() {
                 tabs.setupWithViewPager(pager)
             }
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_toolbar_dashboard, menu)
     }
 }

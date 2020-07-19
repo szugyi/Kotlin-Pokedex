@@ -30,7 +30,6 @@
                 android:gravity="bottom"
                 android:orientation="vertical">
 
-
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
@@ -42,14 +41,13 @@
                     android:background="@drawable/news1"
                     android:tint="@color/white" />
 
-                <androidx.appcompat.widget.Toolbar
+                <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:elevation="0dp"
                     app:contentInsetLeft="0dp"
-                    app:contentInsetStart="0dp"
-                    app:elevation="0dp">
-
+                    app:contentInsetStart="0dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -60,8 +58,7 @@
                         android:textSize="28sp"
                         android:textStyle="bold" />
 
-
-                </androidx.appcompat.widget.Toolbar>
+                </com.google.android.material.appbar.MaterialToolbar>
 
             </LinearLayout>
 

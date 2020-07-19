@@ -31,22 +31,17 @@ class PokemonAdapter(
             itemView.textViewID.text = item.id
 
             val color = PokemonColorUtil(itemView.context).getPokemonColor(item.typeofpokemon)
-            itemView.relativeLayoutBackground.background.colorFilter =
+            itemView.constraintLayoutBackground.background.colorFilter =
                 PorterDuffColorFilter(color, PorterDuff.Mode.SRC_ATOP)
 
             item.typeofpokemon?.getOrNull(0).let { firstType ->
-                itemView.textViewType3.text = firstType
-                itemView.textViewType3.isVisible = firstType != null
+                itemView.textViewType1.text = firstType
+                itemView.textViewType1.isVisible = firstType != null
             }
 
             item.typeofpokemon?.getOrNull(1).let { secondType ->
                 itemView.textViewType2.text = secondType
                 itemView.textViewType2.isVisible = secondType != null
-            }
-
-            item.typeofpokemon?.getOrNull(2).let { thirdType ->
-                itemView.textViewType1.text = thirdType
-                itemView.textViewType1.isVisible = thirdType != null
             }
 
             Glide.with(itemView.context)

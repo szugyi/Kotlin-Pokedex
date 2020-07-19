@@ -19,7 +19,6 @@ import kotlinx.android.synthetic.main.fragment_pokedex.*
 import kotlinx.android.synthetic.main.item_pokemon.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 class PokedexFragment : Fragment() {
 
     private val pokedexViewModel: PokedexViewModel by viewModel()
@@ -118,7 +117,7 @@ class PokedexFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_pokedex_toolbar, menu)
+        inflater.inflate(R.menu.menu_toolbar_pokedex, menu)
     }
 
     private fun showAllGen() {

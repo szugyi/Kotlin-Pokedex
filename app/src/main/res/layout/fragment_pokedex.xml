@@ -43,7 +43,7 @@
                 android:layout_height="?attr/actionBarSize"
                 android:background="@android:color/transparent"
                 android:elevation="0dp"
-                app:menu="@menu/menu_pokedex_toolbar" />
+                app:menu="@menu/menu_toolbar_pokedex" />
 
             <TextView
                 android:layout_width="wrap_content"

@@ -48,4 +48,15 @@
         <item name="colorOnSecondary">@color/white</item>
     </style>
 
+    <style name="CollapsingToolbarTitle.Expanded" parent="TextAppearance.Design.CollapsingToolbar.Expanded">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/circularstd_medium</item>
+    </style>
+
+    <style name="CollapsingToolbarTitle.Collapsed" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/circularstd_medium</item>
+    </style>
+
 </resources>
