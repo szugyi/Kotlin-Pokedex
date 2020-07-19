@@ -113,6 +113,11 @@ Also available in Play Store
 | [<img src="https://avatars3.githubusercontent.com/u/993608?s=115&v=4" width="48"><br><sub>@mrcsxsiq</sub>](https://github.com/mrcxsiq) |
 | :---: |
 
+## Attribution
+### Icons
+Icons made by [Freepik](https://www.flaticon.com/authors/freepik) from [www.flaticon.com](https://www.flaticon.com/)
+Icons made by [Becris](https://www.flaticon.com/authors/becris) from [www.flaticon.com](https://www.flaticon.com/)
+
 ## License
 
 All the code available under the MIT license. See [LICENSE](LICENSE).

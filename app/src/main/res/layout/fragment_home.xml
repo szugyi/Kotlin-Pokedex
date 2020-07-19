@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/red"
+    android:background="@color/white"
     android:fitsSystemWindows="true">
 
     <RelativeLayout
@@ -12,16 +12,17 @@
         android:layout_height="260dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:background="@color/red">
+        android:background="@color/white">
 
+        <!--  translation: 260/2 = 130 - 24 = 106  -->
         <ImageView
             android:layout_width="260dp"
             android:layout_height="260dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_gravity="end"
-            android:layout_marginTop="-90dp"
-            android:layout_marginEnd="-90dp"
+            android:layout_marginTop="-106dp"
+            android:layout_marginEnd="-106dp"
             android:adjustViewBounds="true"
             android:alpha="0.10"
             android:background="@drawable/pokeball"
@@ -64,14 +65,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="@string/main_title"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="32sp"
                     android:textStyle="bold" />
 
                 <androidx.appcompat.widget.Toolbar
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_bottom_border_red"
+                    android:background="@drawable/rounded_bottom_border"
                     android:paddingTop="16dp"
                     app:contentInsetLeft="0dp"
                     app:contentInsetStart="0dp"

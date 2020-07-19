@@ -1,9 +1,9 @@
 package dev.marcosfarias.pokedex.ui.pokedex
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -18,6 +18,7 @@ import dev.marcosfarias.pokedex.utils.PokemonColorUtil
 import kotlinx.android.synthetic.main.fragment_pokedex.*
 import kotlinx.android.synthetic.main.item_pokemon.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class PokedexFragment : Fragment() {
 
@@ -39,7 +40,23 @@ class PokedexFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activity?.window?.statusBarColor =
-            PokemonColorUtil(view.context).convertColor(R.color.background)
+            PokemonColorUtil(view.context).convertColor(R.color.white)
+
+        val activity: AppCompatActivity = requireActivity() as AppCompatActivity
+        activity.setSupportActionBar(toolbar)
+        activity.supportActionBar?.setDisplayShowTitleEnabled(false)
+        activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        setHasOptionsMenu(true)
+        toolbar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.menuSettings -> {
+                    Toast.makeText(requireContext(), "Show settings!", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                else -> super.onOptionsItemSelected(menuItem)
+            }
+        }
 
         val progressBar = progressBar
         val recyclerView = recyclerView
@@ -98,6 +115,10 @@ class PokedexFragment : Fragment() {
                 }
             }
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_pokedex_toolbar, menu)
     }
 
     private fun showAllGen() {

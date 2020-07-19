@@ -29,7 +29,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activity?.window?.statusBarColor = PokemonColorUtil(view.context).convertColor(R.color.red)
+        activity?.window?.statusBarColor = PokemonColorUtil(view.context).convertColor(R.color.white)
 
         val recyclerViewMenu = recyclerViewMenu
         val recyclerViewNews = recyclerViewNews
